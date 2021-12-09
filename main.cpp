@@ -124,7 +124,6 @@ int main()
        break;
 
       case 15:
-        //cout << "Ingrese un numero: "; cin >> divisor;
 
 
 
