@@ -2,13 +2,21 @@
 #include <cstdlib>
 using namespace std;
 
+
+/*bool espalindromo(string cadena, int size){
+    for (int i = 0; i<size/2;i++)
+        return false;
+    return true;
+}*/
+
 int main()
 {
     unsigned short num, N;
     long double N1,N2;
     long long pot=0,i=1;
-    float pi=3.1416;
-    int n,cont=0;
+    float e,pi=3.1416;
+    int A,B,a,b,c,n,cont=0;
+    bool adi = false;
 
 
     cout << "Ingrese el Numero del Problema a Ejecutar" << endl;
@@ -37,7 +45,7 @@ int main()
     //----------------------------------------------------------
         case 6:
 
-        int A,B;
+        //int A,B;
         cout << "Ingrese el primer Numero";
         cin>>A;
         cout << "Ingrese el Segundo Numero";
@@ -88,11 +96,7 @@ int main()
         cout << "Ingrese un Numero";
         cin >>N;
         for(unsigned short i=1;N*i<=100;i=i+1) cout << N*i<<endl;
-        //unsigned short i=1;
-        //while (N*i<=100){
-          //  cout << N+i <<endl;
-            //i = i+1;
-        //}
+
        break;
     //----------------------------------------------------------
     case 12:
@@ -162,7 +166,7 @@ int main()
                   }
 
             cont+=1;
-            if ((pot!=n & cont==n/2)){
+            if ((pot!=n && cont==n/2)){
                 cout <<n<< " NO es un cuadrado perfecto. "<<endl;
             }
         }
@@ -170,12 +174,20 @@ int main()
        break;
     //----------------------------------------------------------
     case 20:
+       A=1;
+       B=0;
+       cout<<"Ingrese el Numero"<<endl;
+       cin>>n;
+       N1=n;
 
-        cout<<"Ingrese el Numero"<<endl;
-        cin>>n;
+       while (A>0){
+       A= N1/10;
+       B = (10*B)+(N1-(A*10));
+       N1 = A;
+    }
+       if (B==n) cout <<n<<" es un numero palindromo."<<endl;
 
-      //  cout<<n[3]<<endl;
-
+       else cout<<n<<" NO es un numero palindromo."<<endl;
 
        break;
     //----------------------------------------------------------
@@ -208,9 +220,32 @@ int main()
     //----------------------------------------------------------
     case 26:
 
+        //unsigned a,b,c;
+        cout << "Ingrese el Primer Numero"<<endl;
+        cin>>a;
+        cout << "Ingrese el Segundo Numero"<<endl;
+        cin>>b;
+        cout << "Ingrese el Tercer Numero"<<endl;
+        cin>>c;
+
+        if ((a+b>c) || (a+c>b) || (b+c>a)) cout<<"Las longitudes ingresadas no forman un triangulo."<<endl;
+        else if (a==b && a==c) cout << "Se forma un triangulo equilatero."<<endl;
+        else if ((a==b && a!=c) || (a==c && a!=b) || (b==c && c!=a)) cout << "Se forma un triangulo isosceles."<<endl;
+        else if ((a!=b && a!=c && b!=c)) cout << "Se forma un triangulo escaleno."<<endl;
+
+
        break;
     //----------------------------------------------------------
         case 28:
+        pi=0;
+        cout << "Ingrese el Numero de terminos";
+        cin>>n;
+
+        for(short i=0;i<n;i++){
+            if(i%2==0) pi += 1.0/(2*i+1);
+            else pi -= 1.0/(2*i+1);
+        }
+        cout <<"pi es aproximadamente:"<<4*pi<< endl;
 
        break;
      //----------------------------------------------------------
@@ -219,7 +254,8 @@ int main()
         cin>>n;
 
         int valor;
-        bool adi = false;
+        //bool adi = false;
+        srand(time_t(NULL));
         valor = rand() % 100;
         //cout<<valor<<endl;
 
@@ -246,7 +282,249 @@ int main()
 
          break;
 
+       //----------------------------------------------------------
+            case 32:
 
+    {
+        int b50,b20,b10,b5,b2,b1,m500,m200,m100,m50,fal;
+
+        cout<<"Ingrese un Numero"<<endl;
+        cin>>n;
+
+        b50 = n/50000;
+        b20 = (n%50000)/20000;
+        b10 = ((n%50000)%20000)/10000;
+        b5 = (((n%50000)%20000)%10000)/5000;
+        b2 = ((((n%50000)%20000)%10000)%5000)/2000;
+        b1 = (((((n%50000)%20000)%10000)%5000)%2000)/1000;
+        m500 = ((((((n%50000)%20000)%10000)%5000)%2000)%1000)/500;
+        m200 = (((((((n%50000)%20000)%10000)%5000)%2000)%1000)&500)/200;
+        m100 = ((((((((n%50000)%20000)%10000)%5000)%2000)%1000)%500)%200)/100;
+        m50 = (((((((((n%50000)%20000)%10000)%5000)%2000)%1000)%500)%200)%100)/50;
+        fal = n-((b50*50000)+(b20*20000)+(b10*10000)+(b5*5000)+(b2*2000)+(b1*1000)+(m500*500)+(m200*200)+(m100*100)+(m50*50));
+        cout<<fal<<endl;
+
+        cout<<"50000 : "<<b50<<endl;
+        cout<<"20000: "<<b20<<endl;
+        cout<<"10000 : "<<b10<<endl;
+        cout<<"5000: "<<b5<<endl;
+        cout<<"2000 : "<<b2<<endl;
+        cout<<"1000: "<<b1<<endl;
+        cout<<"500 : "<<m500<<endl;
+        cout<<"200: "<<m200<<endl;
+        cout<<"100 : "<<m100<<endl;
+        cout<<"50: "<<m50<<endl;
+        cout<<"Faltante: "<<fal<<endl;
+    }
+
+           break;
+       //----------------------------------------------------------
+
+        //----------------------------------------------------------
+             case 34:
+
+        cout << "Ingrese el Primer Numero"<<endl;
+        cin>>a;
+        cout << "Ingrese el Segundo Numero"<<endl;
+        cin>>b;
+        if (a/100 >=24 || a%100>=60) cout<<a<<" es un tiempo invalido."<<endl;
+        else if (b/100 >=24 || b%100>=60) cout<<b<<" es un tiempo invalido."<<endl;
+        else {
+            hh=((a/100)+(b/100));
+            mm=(a%100)+(b%100);
+            if (mm>=60){
+                hh += mm/60;
+                 mm = (mm%60);
+                }
+             cout<<hh<<mm<<endl;
+
+        }
+
+            break;
+        //----------------------------------------------------------
+        //----------------------------------------------------------
+             case 36:
+
+        //la variable pot es el factorial
+        //int fact;
+      e=0;
+      cout << "Ingrese el Numero de terminos";
+      cin>>A;
+      pot=1;
+      for(short p=0;p<A;p++){
+
+         //88888888888888888888888888
+        n=p;
+        while (i<=n){
+          pot *= i;
+          i+=1;
+          }
+        e += 1.0/pot;
+        //88888888888888888888888888
+      }
+        cout <<"e es aproximadamente: "<<e<< endl;
+
+            break;
+        //----------------------------------------------------------
+        //----------------------------------------------------------
+             case 38:
+
+        cout << "Ingrese el Primer Numero"<<endl;
+        cin>>a;
+        cout << "Ingrese el Segundo Numero"<<endl;
+        cin>>b;
+        cout << "Ingrese el Tercer Numero"<<endl;
+        cin>>c;
+            A=0;
+            B=0;
+        for(unsigned short i=1;a*i<c;i=i+1){
+            A += a*i;
+            cout << a*i<<" + ";
+        }
+        for(unsigned short i=1;b*i<c;i=i+1){
+
+            if ((b*i)%a!=0){
+                B += b*i;
+                if ((c/(b*i))==1){
+                cout << b*i<<" = ";
+                    }
+                else cout << b*i<<" + ";
+                }
+            }
+            cout<<A+B<<endl;
+
+            break;
+        //----------------------------------------------------------
+        //----------------------------------------------------------
+         case 40:
+
+            cout<<"Ingrese un Numero"<<endl;
+            cin>>a;
+            c=0;
+
+            while (c!=a){
+
+                n=i;
+                A=0;
+                cont=0;
+                while (A<=n){
+                    A+=1;
+                    if (n%A==0){cont+=1;}
+                    }
+
+                if (cont==2){c+=1;}
+                i+=1;
+            }
+
+            if ((a/c)==1){cout <<"El primo numero "<<a<<" es: "<<n<<"."<<endl;}
+
+            break;
+        //----------------------------------------------------------
+        //----------------------------------------------------------
+             case 42:
+
+        cout << "Ingrese un Numero"<<endl;
+        cin>>a;
+
+        b=0;
+        while (i<=a){
+
+            n=i;
+            A=0;
+            cont=0;
+            if(n==2 || n%2!=0){
+                while (A<=n){
+                    A+=1;
+                    if (n%A==0){cont+=1;}
+                    }
+                //if (cont==2){cout<<n<<" es PRIMO"<<endl;}
+                if(a%n==0){
+                    if(n>b && n<a && n!=1){
+                    b=n;
+                    cout<<n<<" es PRIMO"<<endl;}
+                }
+
+            }
+            i+=1;
+
+        }
+        if (b==0){cout<<a<<" NO tiene factor primo."<<endl;}
+        else cout<<"El mayor factor primo de "<<a<<" es: "<<b<<"."<<endl;
+
+
+            break;
+        //----------------------------------------------------------
+        //----------------------------------------------------------
+             case 44:
+
+        c=0;
+        a=0;
+        b=0;
+        e=0;
+        for(unsigned short f=100;f<=999;f++){
+            for(unsigned short i=100;i<=999;i++){
+
+                A=1;
+                B=0;
+                n=f*i;
+                N1=n;
+
+                while (A>0){
+                A= N1/10;
+                B = (10*B)+(N1-(A*10));
+                N1 = A;
+                    }
+                if (B==n){
+                    if(n>c){ c=n,a=f,b=i;}
+                        }
+                    //cout <<n<<" es un numero palindromo."<<f<<"*"<<i<<endl;}
+
+                //else cout<<n<<" NO es un numero palindromo."<<endl;
+                e+=100.0/(899.0*899.0);
+                cout<<"Cargando..."<<e<<"%"<<endl;
+            }
+
+           }
+        cout<<endl;
+        cout << a<< "*"<<b<<"="<<c<<endl;
+
+          break;
+        //----------------------------------------------------------
+        //----------------------------------------------------------
+             case 46:
+
+        cout << "Ingrese un Numero"<<endl;
+        cin>>n;
+
+        a=0;
+        b=0;
+        for(unsigned short f=1;f<=n;f++){
+            c=f;//elemento
+            cont=0;
+            //cout<<"para la semilla "<<f<<": ";
+            while (c>=1){
+                //if (c==1)cout<<c<<endl;
+                //else cout<<c<<", "; //debo hacer la correccion de la ultima , con el 1
+                if (c%2==1 && c!=1 ){c=3*c+1; cont+=1;}
+                else {c=c/2; cont+=1;}
+            }
+            if (cont>b){b=cont; a=f;}
+        }
+
+        cout<<"La serie mas larga es con la semilla: "<<a<<", teniendo "<<b<<" terminos."<<endl;
+
+        //Repito el codigo para imprimir la serie despues de encontar la mas larga.
+        c=a;//elemento de la serie mas larga.
+        cout<<"para la semilla "<<a<<": ";
+        while (c>=1){
+            if (c==1)cout<<c<<endl;
+            else cout<<c<<", ";
+            if (c%2==1 && c!=1 )c=3*c+1;
+            else c=c/2;
+        }
+
+            break;
+        //----------------------------------------------------------
 
     }
     return 0;
